@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 // Validate user Registration Data :-
-exports.validateRegisterationData = (req, res, next) => {
+const validateRegisterationData = (req, res, next) => {
     const schema = Joi.object({
         firstName : Joi.string().required(),
         lastName : Joi.string().required(),
@@ -19,4 +19,25 @@ exports.validateRegisterationData = (req, res, next) => {
     }
     
     next()
+}
+
+const validateLoginData = (req, res, next) => {
+    const schema = Joi.object({
+        email: Joi.string().email().required(),
+        password: Joi.string().min(6).required(),
+    });
+    
+    const {error} = schema.validate(req.body);
+    
+    if(error) {
+        return res.status(400).json({
+            message : error.details[0].message
+        });
+    }
+    next();
+}
+
+module.exports = {
+    validateRegisterationData,
+    validateLoginData
 }

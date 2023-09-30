@@ -13,7 +13,7 @@ connectDB();
 app.use(express.json());
 const port = process.env.PORT || 3000;
 
-app.use('/', authRoutes);
+app.use('/auth', authRoutes);
 
 app.listen(port, ()=> {
     console.log(`Server is running on ${port}`);
