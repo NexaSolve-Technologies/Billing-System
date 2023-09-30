@@ -15,7 +15,6 @@ const verifyToken = (req, res, next) => {
         
         // Add user from payload to different object
         req.user = decoded;
-        
         next();
         
     } catch (err) {

@@ -6,6 +6,7 @@ const validateRegisterationData = (req, res, next) => {
         firstName : Joi.string().required(),
         lastName : Joi.string().required(),
         userName : Joi.string().required(),
+        role : Joi.string(),
         phone : Joi.number().required(),
         email : Joi.string().email().required(),
         password : Joi.string().min(6).required(),
