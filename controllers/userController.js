@@ -23,7 +23,7 @@ const updateUserProfile = async (req, res) => {
 
 const deleteUserProfile = async (req, res) => {
     try {
-        await User.findByIdAndDelete(res.user.id);
+        await User.findByIdAndDelete(req.user.id);
         res.status(200).json({message : 'Account deleted.'})
     } catch (err) {
         console.log(err);

@@ -17,7 +17,7 @@ const addNewProduct = async (req, res) => {
             stock,
             isAvailable
         })
-        res.json(newProduct);
+        res.status(201).json(newProduct);
     } catch (err) {
         console.log(err);
         res.status(500).send('Internal Server Error');
@@ -34,6 +34,7 @@ const listAllProducts = async (req,res) => {
     }
 }
 
+// hide Specific product for customers :-
 const viewSpecificProduct = async (req, res) => {
     try {
         const productID = parseInt(req.params.id);

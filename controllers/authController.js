@@ -21,7 +21,7 @@ const register = async (req, res) => {
         
         // Creating a random userID everytime :-
         const count = await User.countDocuments();
-        const userID = count + 1;
+        const userID = Math.floor(Math.random()*100000);
 
         // Creating new user in the database :-
         const newUser = await User.create({
@@ -38,7 +38,7 @@ const register = async (req, res) => {
 
         const token = generateToken({ id : newUser._id, email : newUser.email, role : newUser.role });
         
-        res.status(201).json({message : 'UserCreated', password : EncryptedPassword, tokenn : token})
+        res.status(201).json({message : 'UserCreated', tokenn : token})
     } catch (error){
         console.log("Error :", error);
         res.status(500).json({message : "Internal Server Error"});
