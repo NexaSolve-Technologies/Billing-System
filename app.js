@@ -3,6 +3,7 @@ const connectDB = require('./config/db')
 const authRoutes = require('./routes/authRoutes')
 const userRoutes = require('./routes/userRoutes')
 const productRoutes = require('./routes/productRoutes');
+const packageRoutes = require('./routes/packageRoutes');
 require('dotenv').config();
 
 // Initialise the app.
@@ -18,6 +19,7 @@ const port = process.env.PORT || 3000;
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 app.use('/product', productRoutes);
+app.use('/package', packageRoutes);
 
 app.listen(port, ()=> {
     console.log(`Server is running on ${port}`);
