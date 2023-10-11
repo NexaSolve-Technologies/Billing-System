@@ -5,7 +5,7 @@ const authRoutes = require('./routes/authRoutes')
 const userRoutes = require('./routes/userRoutes')
 const productRoutes = require('./routes/productRoutes');
 const packageRoutes = require('./routes/packageRoutes');
-const customerRoutes = require('./routes/customerRoutes');
+const checkoutRoutes = require('./routes/checkoutRoutes');
 require('dotenv').config();
 
 // Initialise the app.
@@ -25,7 +25,7 @@ app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 app.use('/product', productRoutes);
 app.use('/package', packageRoutes);
-app.use('/customer', customerRoutes)
+app.use('/checkout', checkoutRoutes)
 
 app.listen(port, ()=> {
     console.log(`Server is running on ${port}`);

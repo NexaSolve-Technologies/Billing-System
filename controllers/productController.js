@@ -3,9 +3,7 @@ const  Product  = require('../models/Product');
 const addNewProduct = async (req, res) => {
     try {
         const { name, price, description, images} = req.body;
-        
-        const count = await Product.countDocuments();
-               
+                       
         const newProduct = await Product.create({
             name,
             price, 
