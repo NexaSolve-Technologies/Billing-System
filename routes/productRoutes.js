@@ -2,9 +2,10 @@ const express = require('express');
 const { addNewProduct, listAllProducts, viewSpecificProduct, EditProduct, deleteProduct } = require('../controllers/productController');
 const { verifyToken } = require('../middleware/jwtMiddleware');
 const { roleCheck } = require('../middleware/roleCheck');
+const upload = require('../middleware/imageUploadMiddleware');
 const router = express.Router();
 
-router.post('/addNewProduct',verifyToken, roleCheck(['admin', 'Master']), addNewProduct);
+router.post('/addNewProduct',verifyToken, roleCheck(['admin', 'Master']), upload.single('image') ,addNewProduct);
 router.get('/listAllProducts',verifyToken, listAllProducts);
 router.get('/viewSpecificProduct/:id', viewSpecificProduct);
 router.put('/editProduct/:id', verifyToken, roleCheck(['admin', 'Master']), EditProduct);

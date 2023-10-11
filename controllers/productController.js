@@ -2,13 +2,16 @@ const  Product  = require('../models/Product');
 
 const addNewProduct = async (req, res) => {
     try {
-        const { name, price, description, images} = req.body;
+        const { name, price, description} = req.body;
                        
         const newProduct = await Product.create({
             name,
             price, 
             description,
-            images,
+            images : [{
+                fileId : req.file.id, // The unique ID of the uploaded image provided by the middleware.
+                alt : "This is an Image"
+            }]
         })
         res.status(201).json(newProduct);
     } catch (err) {

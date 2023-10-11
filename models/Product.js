@@ -17,7 +17,7 @@ const productSchema = Schema({
         maxlength : 1000
     },
     images : [{
-        url : String,
+        fileId : Schema.Types.ObjectId,
         alt : String
     }], 
     createdAt : {

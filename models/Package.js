@@ -15,6 +15,10 @@ const packageSchema = Schema({
             required : true
         }
     ],
+    images : [{
+        fileId : Schema.Types.ObjectId,
+        alt : String
+    }],
     defaultPrice : {
         type : Number,
         required : true
