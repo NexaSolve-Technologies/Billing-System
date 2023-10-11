@@ -11,11 +11,7 @@ const productSchema = Schema({
         type : Number,
         required : true,
         min : 0
-    },
-    category : {
-        type : String,
-        maxlength : 255
-    },
+    }, 
     description : {
         type : String,
         maxlength : 1000
@@ -23,20 +19,7 @@ const productSchema = Schema({
     images : [{
         url : String,
         alt : String
-    }],
-    stock : {
-        type : Number,
-        required : true,
-        min : 0
-    },
-    productId : {
-        type : Number,
-        required : true
-    },
-    isAvailable : {
-        type : Boolean,
-        default : true
-    },
+    }], 
     createdAt : {
         type : Date,
         default : Date.now

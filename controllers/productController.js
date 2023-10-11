@@ -2,20 +2,15 @@ const  Product  = require('../models/Product');
 
 const addNewProduct = async (req, res) => {
     try {
-        const { name, price, category, description, images, stock, isAvailable } = req.body;
+        const { name, price, description, images} = req.body;
         
         const count = await Product.countDocuments();
-        const productID = count + 1;
-        
+               
         const newProduct = await Product.create({
             name,
-            price,
-            category,
+            price, 
             description,
-            productId : productID,
             images,
-            stock,
-            isAvailable
         })
         res.status(201).json(newProduct);
     } catch (err) {
