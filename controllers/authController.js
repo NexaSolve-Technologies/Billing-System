@@ -5,7 +5,7 @@ const bycrypt = require('bcrypt');
 const register = async (req, res) => {
     try {
         // Get User Input :-
-        const {firstName, lastName, userName, role, phone, email, password, address} = req.body;
+        const {firstName, lastName, userName, role, phone, email, password} = req.body;
 
         // Validation of UserInput has been done in Middlewares part :-
         
@@ -32,8 +32,7 @@ const register = async (req, res) => {
             phone,
             userId : userID,
             email : email.toLowerCase(),
-            password : EncryptedPassword,
-            address,
+            password : EncryptedPassword
         })
 
         const token = generateToken({ id : newUser._id, email : newUser.email, role : newUser.role });
