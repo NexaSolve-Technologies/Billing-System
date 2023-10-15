@@ -3,12 +3,12 @@ const Product = require('../models/Product');
 
 const addNewPackage = async (req, res) => {
     try{
-        const { name, products, customPrice, description } = req.body;
+        const { name, products, price, description } = req.body;
         
-        const package = await Package.findOne({name});
-        if(package) {
-            return res.status(401).json({message : "This name already exists."});
-        }
+        // const package = await Package.findOne({name});
+        // if(package) {
+        //     return res.status(401).json({message : "This name already exists."});
+        // }
         
         // Calculating the default price by fetching each product's price and summing it up.
         let defaultPrice = 0;
@@ -17,14 +17,17 @@ const addNewPackage = async (req, res) => {
             defaultPrice += product.price;
         });
         
-        createdBy = req.user.id;
-        console.log(req.user);
+        createdBy = req.user.id; 
         
         const newPackage = await Package.create({
             name,
             products,
             defaultPrice : defaultPrice,
-            customPrice,
+            // images : [{
+            //     fileId : req.file.id,
+            //     alt : "This is an Image"
+            // }],
+            price,
             description,
             createdBy
         })

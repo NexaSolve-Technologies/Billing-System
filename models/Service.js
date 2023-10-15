@@ -1,40 +1,33 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
-const productSchema = Schema({
+const serviceSchema = Schema({
     name : {
         type : String,
-        required : true,
-        maxlenght : 255
+        required : true
     },
     price : {
         type : Number,
-        required : true,
-        min : 0
-    }, 
+        required : true
+    },
     description : {
         type : String,
-        maxlength : 1000
     },
-    // images : [{
-    //     fileId : Schema.Types.ObjectId,
-    //     alt : String
-    // }], 
     createdAt : {
         type : Date,
         default : Date.now
     },
     updatedAt : {
-        type : Date
+        type : Date,
     },
     createdBy : {
         type : Schema.Types.ObjectId,
         ref : 'User',
         required : true
-        }
-}) 
+    }
+});
 
-productSchema.pre('save', function(next) {
+serviceSchema.pre('save', function (next) {
     if(!this.isNew) {
         this.updatedAt = Date.now();
     }
@@ -42,4 +35,4 @@ productSchema.pre('save', function(next) {
     next();
 })
 
-module.exports = mongoose.model('Product', productSchema);
+module.exports = mongoose.model('Service', serviceSchema);

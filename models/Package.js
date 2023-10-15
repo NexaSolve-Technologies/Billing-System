@@ -5,8 +5,7 @@ const packageSchema = Schema({
     name : {
         type : String,
         required : true,
-        trim : true,
-        unique : true
+        trim : true
     },
     products : [
         {
@@ -15,16 +14,17 @@ const packageSchema = Schema({
             required : true
         }
     ],
-    images : [{
-        fileId : Schema.Types.ObjectId,
-        alt : String
-    }],
+    // images : [{
+    //     fileId : Schema.Types.ObjectId,
+    //     alt : String
+    // }],
     defaultPrice : {
         type : Number,
         required : true
     },
-    customPrice : {
-        type : Number
+    price : {
+        type : Number,
+        required : true
     },
     description : {
         type : String,

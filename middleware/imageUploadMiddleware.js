@@ -6,7 +6,7 @@ const storage = new GridFsStorage({
     url : mongoURI,
     file : (req, file) => {
         return {
-            filename : file.orignalname,
+            filename : file.originalname,
             bucketName : 'productImages'
         };
     }
